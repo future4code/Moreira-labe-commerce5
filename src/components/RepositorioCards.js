@@ -11,8 +11,6 @@ const ContainerCard = styled.div`
     padding-bottom: 15px;
 `
 
-
-
 function RepositorioCards (props) {
     return (
     
@@ -20,7 +18,7 @@ function RepositorioCards (props) {
             <img src={props.imagem}/>
             <p>{props.produto}</p>
             <p>{props.preco}</p>
-            <button>Adicionar ao Carrinho</button>
+            <button onClick={props.adicionaCarrinho(props.produto,props.preco)}>Adicionar ao Carrinho</button>
         </ContainerCard>
     )
 }
