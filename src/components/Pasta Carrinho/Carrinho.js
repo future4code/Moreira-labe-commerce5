@@ -5,8 +5,10 @@ import CarrinhoCards from './CarrinhoCards'
 
 //>>>>CÓDIGO - ESTILIZAÇÕES DO COMPONENTE (CARRINHO)<<<<
 const MainContainerCarrinho = styled.div`
-  border: 1px solid black;
+  border: 1px solid white;
   width: 15%;
+  background-color: rgb(55, 26, 72);
+  color: white;
 `
 
 const EscolheProdutos2 = styled.p`

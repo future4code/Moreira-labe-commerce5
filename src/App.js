@@ -2,22 +2,34 @@
 import React from "react";
 import styled from "styled-components";
 import "./styles.css";
-// import Home from './components/Home'
-import RepositorioCards from "./components/RepositorioCards";
-import Carrinho from "./components/Carrinho";
-import Filtro from "./components/Filtro";
-
+import RepositorioCards from "./components/Pasta Repositórios/RepositorioCards";
+import Header from "./components/Pasta Header/Header";
+import Carrinho from "./components/Pasta Carrinho/Carrinho";
+import Filtro from "./components/Pasta Filtro/Filtro";
+import Imagem1 from "./imagens/macaco_bandeira.jpg";
+import Imagem2 from "./imagens/layka_pretobranca.jpg";
+import Imagem3 from "./imagens/camiseta_serie.jpeg";
+import Imagem4 from "./imagens/et_dedomeio.jpg";
+import Imagem5 from "./imagens/macaco_astronauta.jpg";
+import Imagem6 from "./imagens/nave_espacial_meleva.jpg";
+import Footer from "./components/Pasta Footer/Footer";
+import {createGlobalStyle} from 'styled-components';
 
 
 //>>>>CÓDIGO - ESTILIZAÇÕES DO APP JS<<<<
+const GlobalStyle = createGlobalStyle`
+  body {
+    margin: 0;
+    padding: 0;
+  }
+`
+
 const OrdenacaoBlocos = styled.div`
   display: flex;
 `
-
-//>>>>CÓDIGO - ESTILIZAÇÕES DO COMPONENTE (HOME)<<<<
 const MainContainer = styled.div`
-  border: 1px solid black;
-  width: 70%;
+  border: 1px solid white;
+  width: 70%; 
 `
 
 const OrdenacaoTextos = styled.div`
@@ -25,6 +37,12 @@ const OrdenacaoTextos = styled.div`
   justify-content: space-around;
   align-items: center;
   margin: 10px;
+  color: #3936EB;
+  font-weight: bold;
+  font-size: 20px;
+  select {
+    box-shadow: rgba(57, 54, 235, 0.4) 5px 5px, rgba(57, 54, 235, 0.3) 10px 10px, rgba(57, 54, 235, 0.2) 15px 15px, rgba(57, 54, 235, 0.1) 20px 20px, rgba(57, 54, 235, 0.05) 25px 25px;
+  }
 `
 
 const ContainerAlinhamento = styled.div`
@@ -39,39 +57,39 @@ class App extends React.Component {
     produtos: [
       {
         id: 1,
-        name: "Camiseta 1",
+        name: "Chimpanzé Colonizando Marte",
         value: 100.0,
-        imageUrl: "https://picsum.photos/200/200"
+        imageUrl: Imagem1
       },
       {
         id: 2,
-        name: "Camiseta 2",
+        name: "Layka Traditional",
         value: 200.0,
-        imageUrl: "https://picsum.photos/200/200"
+        imageUrl: Imagem2
       },
       {
         id: 3,
-        name: "Camiseta 3",
+        name: "Astro-Spock",
         value: 300.0,
-        imageUrl: "https://picsum.photos/200/200"
+        imageUrl: Imagem3
       },
       {
         id: 4,
-        name: "Camiseta 4",
+        name: "E.t. Mal Educado",
         value: 400.0,
-        imageUrl: "https://picsum.photos/200/200"
+        imageUrl: Imagem4
       },
       {
         id: 5,
-        name: "Camiseta 5",
+        name: "Macaconauta",
         value: 500.0,
-        imageUrl: "https://picsum.photos/200/200"
+        imageUrl: Imagem5
       },
       {
         id: 6,
-        name: "Camiseta 6",
+        name: "Vamos Embora",
         value: 600.0,
-        imageUrl: "https://picsum.photos/200/200"
+        imageUrl: Imagem6
       }
     ],
     valorMin: "",
@@ -85,18 +103,6 @@ class App extends React.Component {
     valorTotal: 0,
 
     addCarrinho: [
-      /* {
-        id: 1,
-        name: "Camiseta 1",
-        value: 100.0,
-        quantidade: 1
-      },
-      {
-        id: 2,
-        name: "Camiseta 2",
-        value: 200.0,
-        quantidade: 3
-      } */
     ]
   };
 
@@ -207,7 +213,8 @@ class App extends React.Component {
 
     return (
       <div className="App">
-        <h1>Astrobot-Commerce</h1>
+        <GlobalStyle/>
+        <Header/>
         <OrdenacaoBlocos>
           <Filtro
             atualizaValorMin={this.atualizaValorMin}
@@ -217,13 +224,11 @@ class App extends React.Component {
             valorMax={this.state.valorMax}
             buscador={this.state.buscador}
           />
-
-          {/* CÓDIGO TRAZIDO DO HOME */}
           <MainContainer>
             <OrdenacaoTextos>
               <p>Quantidade de Produtos: {produtosFiltradosOrdenados.length}</p>
               <div>
-                <label>Ordenação:</label>
+                <label>Ordenação:   </label>
                 <select
                   value={this.state.paramOrdem}
                   onChange={this.atualizaOrdem}
@@ -256,6 +261,7 @@ class App extends React.Component {
           removeCarrinho={this.removeCarrinho}
           />
         </OrdenacaoBlocos>
+        <Footer/>
       </div>
     )
   }
