@@ -12,13 +12,14 @@ const ContainerCard = styled.div`
 `
 
 function RepositorioCards (props) {
+
     return (
     
         <ContainerCard>
-            <img src={props.imagem}/>
+            <img src={props.imagem} alt="Imagem do Produto"/>
             <p>{props.produto}</p>
             <p>{props.preco}</p>
-            <button onClick={props.adicionaCarrinho(props.produto,props.preco)}>Adicionar ao Carrinho</button>
+            <button onClick={props.adicionaCarrinho}>Adicionar ao Carrinho</button>
         </ContainerCard>
     )
 }

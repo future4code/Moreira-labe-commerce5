@@ -7,6 +7,8 @@ import RepositorioCards from "./components/RepositorioCards";
 import Carrinho from "./components/Carrinho";
 import Filtro from "./components/Filtro";
 
+
+
 //>>>>CÓDIGO - ESTILIZAÇÕES DO APP JS<<<<
 const OrdenacaoBlocos = styled.div`
   display: flex;
@@ -70,7 +72,7 @@ class App extends React.Component {
         name: "Camiseta 6",
         value: 600.0,
         imageUrl: "https://picsum.photos/200/200"
-      },
+      }
     ],
     valorMin: "",
 
@@ -80,13 +82,21 @@ class App extends React.Component {
 
     paramOrdem: 1,
 
+    valorTotal: 0,
+
     addCarrinho: [
-      {
+      /* {
         id: 1,
-        nome: "Camiseta 1",
-        valor: 100.0,
+        name: "Camiseta 1",
+        value: 100.0,
         quantidade: 1
-      }
+      },
+      {
+        id: 2,
+        name: "Camiseta 2",
+        value: 200.0,
+        quantidade: 3
+      } */
     ]
   };
 
@@ -114,19 +124,87 @@ class App extends React.Component {
     });
   };
 
-  // adicionaCarrinho = (nomeProduto,valorProduto) => {
-  //   const novoProduto={
-  //     nome: nomeProduto,
-  //     valor: valorProduto,
-  //     quantidade: 1
-  //     }
-  //   const copiaProdutos=[
-  //     ...this.state.addCarrinho,novoProduto
-  //   ]
-  //     this.setState({addCarrinho:copiaProdutos})
-  // }
-    
+  adicionaCarrinho = (nomeProduto,valorProduto, idProduto) => {
+
+    const produtoNoCarrinho = this.state.addCarrinho.find(produto => idProduto === produto.id)
+
+    if(produtoNoCarrinho) {
+      const novoProdutoCarrinho = this.state.addCarrinho.map(produto => {
+        if(idProduto === produto.id) {
+          return {
+            ...produto,
+            quantidade: produto.quantidade + 1
+          }
+        }
+        return produto
+      })
+      this.setState({addCarrinho: novoProdutoCarrinho})
+    } else {
+      const produtoAAdicionar = this.state.produtos.find(produto => idProduto === produto.id) 
+
+      const novoProdutoCarrinho = [...this.state.addCarrinho, {...produtoAAdicionar, quantidade: 1}]
+      this.setState({addCarrinho: novoProdutoCarrinho})
+    }
+  }
+   
+  filtrosProdutos = () => {
+    return(
+      this.state.produtos
+      .filter(produto => {
+        return (
+          produto.value >= this.state.valorMin ||
+          this.state.valorMin === ""
+        )
+      })
+      .filter(produto => {
+        return (
+          produto.value <= this.state.valorMax ||
+          this.state.valorMax === ""
+        )
+      })
+      .filter(produto => {
+        return (produto.name
+          .toLowerCase()
+          .includes(this.state.buscador.toLowerCase())
+        )
+      })
+      .sort((produtoAtual, proximoProduto) => {
+        return (
+          this.state.paramOrdem *
+          (produtoAtual.value - proximoProduto.value)
+        )
+      })
+    )
+  }
+
+  removeCarrinho = idProduto => {
+    const novoProduto = this.state.addCarrinho.map(produto => {
+      if(produto.id === idProduto) {
+        return {
+          ...produto,
+          quantidade: produto.quantidade - 1
+        }
+      }
+      return produto
+    }).filter(produto => produto.quantidade > 0)
+
+    this.setState({addCarrinho: novoProduto})
+  }
+
+  calculoValorTotal = () => {
+    let valorTotal = 0
+
+    for(let produto of this.state.addCarrinho) {
+      valorTotal = valorTotal + (produto.value * produto.quantidade)
+    }
+    return valorTotal
+  }
+
+
   render() {
+
+    const produtosFiltradosOrdenados = this.filtrosProdutos()
+
     return (
       <div className="App">
         <h1>Astrobot-Commerce</h1>
@@ -143,7 +221,7 @@ class App extends React.Component {
           {/* CÓDIGO TRAZIDO DO HOME */}
           <MainContainer>
             <OrdenacaoTextos>
-              <p>Quantidade de Produtos:</p>
+              <p>Quantidade de Produtos: {produtosFiltradosOrdenados.length}</p>
               <div>
                 <label>Ordenação:</label>
                 <select
@@ -157,52 +235,30 @@ class App extends React.Component {
             </OrdenacaoTextos>
 
             <ContainerAlinhamento>
-              {this.state.produtos
-                .filter((produto) => {
+              {produtosFiltradosOrdenados 
+                .map(produto => {
                   return (
-                    produto.value >= this.state.valorMin ||
-                    this.state.valorMin === ""
-                  );
-                })
-                .filter((produto) => {
-                  return (
-                    produto.value <= this.state.valorMax ||
-                    this.state.valorMax === ""
-                  );
-                })
-                .filter((produto) => {
-                  return produto.name
-                    .toLowerCase()
-                    .includes(this.state.buscador.toLowerCase());
-                })
-                .sort((produtoAtual, proximoProduto) => {
-                  return (
-                    this.state.paramOrdem *
-                    (produtoAtual.value - proximoProduto.value)
-                  );
-                })
-                .map((produto) => {
-                  return (
+                    
                     <RepositorioCards
                       imagem={produto.imageUrl}
                       produto={produto.name}
                       preco={produto.value}
-                      // adicionaCarrinho={this.adicionaCarrinho}
+                      adicionaCarrinho={() => {this.adicionaCarrinho(produto.name,produto.value, produto.id)}}
                     />
-                  );
+
+                  )
                 })}
             </ContainerAlinhamento>
           </MainContainer>
-          {this.state.addCarrinho.map((produto) => {
-            return <Carrinho 
-            quantidade={produto.quantidade} 
-            nome={produto.nome}
-            />;
-          })}
+          <Carrinho 
+          addCarrinho={this.state.addCarrinho} 
+          valorTotal={this.calculoValorTotal()}
+          removeCarrinho={this.removeCarrinho}
+          />
         </OrdenacaoBlocos>
       </div>
-    );
+    )
   }
 }
 
-export default App;
+export default App
