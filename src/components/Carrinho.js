@@ -1,18 +1,12 @@
 //>>>>IMPORTAÇÕES - COMPONENTE (CARRINHO)<<<<
 import React from "react";
 import styled from "styled-components";
+import CarrinhoCards from './CarrinhoCards'
 
 //>>>>CÓDIGO - ESTILIZAÇÕES DO COMPONENTE (CARRINHO)<<<<
-const MainContainer = styled.div`
+const MainContainerCarrinho = styled.div`
   border: 1px solid black;
   width: 15%;
-`
-
-const EscolheProdutos = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px;
 `
 
 const EscolheProdutos2 = styled.p`
@@ -23,15 +17,19 @@ const EscolheProdutos2 = styled.p`
 //>>>>CÓDIGO - JSX DO COMPONENTE (CARRINHO)<<<<
 function Carrinho(props) {
   return (
-    <MainContainer>
+    <MainContainerCarrinho>
       <h1>Carrinho</h1>
-      <EscolheProdutos>
-        <p>{props.quantidade}x</p>
-        <p>{props.nome}</p>
-        <button>Remover</button>
-      </EscolheProdutos>
-      <EscolheProdutos2>Valor Total: R$xx,xx</EscolheProdutos2>
-    </MainContainer>
+      {props.addCarrinho.map((produto) => {
+            return <CarrinhoCards 
+            quantidade={produto.quantidade} 
+            nome={produto.name}
+            valorTotal={props.valorTotal}
+            removeCarrinho={() => props.removeCarrinho(produto.id)}
+            />;
+          })}
+      <EscolheProdutos2>Valor Total: R${props.valorTotal}</EscolheProdutos2>
+    </MainContainerCarrinho>
+
   );
 }
 
