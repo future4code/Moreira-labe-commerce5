@@ -7,24 +7,35 @@ const MainContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 100%;
     background-color: rgb(55, 26, 72);
     color: white;
-`
+    width:100vw;
+  `
 
 const Logostyle = styled.img`
     width: 170px;
-    margin-left: 20px;    
+    margin-left: 20px;
+    /* celulares */
+    @media screen and (min-device-width : 320px) and (max-device-width : 480px) {
+      max-width: 70px;
+    } 
 `
 
 const Logostyle2 = styled.img`
     width: 170px;
-    margin-right: 20px;    
+    margin-right: 20px;   
+    /* celulares */
+    @media screen and (min-device-width : 320px) and (max-device-width : 480px) {
+      max-width: 70px;
+    }  
 `
 
 const Titulostyle = styled.h1`
     font-size: 70px;
-        
+    /* celulares */
+    @media screen and (min-device-width : 320px) and (max-device-width : 480px) {
+      font-size: 20px;
+    }   
 `
 
 function Header() {

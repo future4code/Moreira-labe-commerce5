@@ -11,11 +11,18 @@ const ContainerCard = styled.div`
     width: 25%;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;  
     background-color: white;  
+    @media screen and (min-device-width : 320px) and (max-device-width : 480px) {
+        font-size: 10px;  
+        width: 80%;
+    }
 `
 
 const Imagens = styled.img`
     width: 80%;
     padding-top: 10px;
+    @media screen and (min-device-width : 320px) and (max-device-width : 480px) {
+        width: 60%;
+    }
 `
 
 const Buttons = styled.button`
@@ -29,6 +36,10 @@ const Buttons = styled.button`
         background-color: #2CA0F5;
         transition-duration: 1s;
         transform:scale(1.2 , 1.2);
+    }
+    @media screen and (min-device-width : 320px) and (max-device-width : 480px) {
+        font-size: 10px;  
+        height: 20px;
     }
 `
 

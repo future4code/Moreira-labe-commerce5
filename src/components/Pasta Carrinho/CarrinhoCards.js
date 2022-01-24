@@ -8,7 +8,15 @@ const EscolheProdutos = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px;
+  padding: 5px;
+
+  p {
+    font-size: 12px;
+    @media screen and (min-device-width : 320px) and (max-device-width : 480px) {
+    font-size: 8px;
+  }
+  }
+
 `
 
 const Buttons = styled.button`
@@ -17,6 +25,11 @@ const Buttons = styled.button`
     border: none;
     border-radius: 35px;
     height: 28px;
+    @media screen and (min-device-width : 320px) and (max-device-width : 480px) {
+    font-size: 6px;
+    height: 16px;
+    
+  }
     :hover {
         cursor:pointer;
         background-color: #EB543E;

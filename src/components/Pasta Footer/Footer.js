@@ -8,10 +8,18 @@ const MainContainer = styled.div`
     width: 100%;
     background-color: rgb(55, 26, 72);
     color: white;
+    border: 1px white solid;
+        /* celulares */
+    @media screen and (min-device-width : 320px) and (max-device-width : 480px) {
+      font-size: 16px;
+    } 
 `
 const Icones = styled.img`
     width: 50px;
     padding: 10px 35px;
+    @media screen and (min-device-width : 320px) and (max-device-width : 480px) {
+        width: 40px;
+    }
 `
 
 function Footer () {

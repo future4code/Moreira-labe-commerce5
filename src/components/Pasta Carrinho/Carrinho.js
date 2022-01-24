@@ -9,6 +9,10 @@ const MainContainerCarrinho = styled.div`
   width: 15%;
   background-color: rgb(55, 26, 72);
   color: white;
+  @media screen and (min-device-width : 320px) and (max-device-width : 480px) {
+    font-size: 10px;
+    width: 30%;
+  }
 `
 
 const EscolheProdutos2 = styled.p`
@@ -29,7 +33,7 @@ function Carrinho(props) {
             removeCarrinho={() => props.removeCarrinho(produto.id)}
             />;
           })}
-      <EscolheProdutos2>Valor Total: R${props.valorTotal}</EscolheProdutos2>
+      <EscolheProdutos2>Valor Total: <strong>R$ {props.valorTotal}</strong></EscolheProdutos2>
     </MainContainerCarrinho>
 
   );

@@ -21,15 +21,23 @@ const GlobalStyle = createGlobalStyle`
   body {
     margin: 0;
     padding: 0;
+    text-align: center;
   }
 `
 
 const OrdenacaoBlocos = styled.div`
   display: flex;
+  width: 100vw;
+  
 `
 const MainContainer = styled.div`
   border: 1px solid white;
   width: 70%; 
+  /* celulares */
+  @media screen and (min-device-width : 320px) and (max-device-width : 480px) {
+    font-size: 12px;
+    width: 40%;
+  } 
 `
 
 const OrdenacaoTextos = styled.div`
@@ -42,7 +50,14 @@ const OrdenacaoTextos = styled.div`
   font-size: 20px;
   select {
     box-shadow: rgba(57, 54, 235, 0.4) 5px 5px, rgba(57, 54, 235, 0.3) 10px 10px, rgba(57, 54, 235, 0.2) 15px 15px, rgba(57, 54, 235, 0.1) 20px 20px, rgba(57, 54, 235, 0.05) 25px 25px;
+    @media screen and (min-device-width : 320px) and (max-device-width : 480px) {
+    font-size: 10px;  
+  } 
   }
+  @media screen and (min-device-width : 320px) and (max-device-width : 480px) {
+    display: inline;
+    font-size: 10px;  
+  } 
 `
 
 const ContainerAlinhamento = styled.div`
@@ -57,7 +72,7 @@ class App extends React.Component {
     produtos: [
       {
         id: 1,
-        name: "Chimpanzé Colonizando Marte",
+        name: "Chimpanzé Colonizador",
         value: 100.0,
         imageUrl: Imagem1
       },
@@ -206,13 +221,29 @@ class App extends React.Component {
     return valorTotal
   }
 
+  limpaFiltros = () => {
+    this.setState({valorMin: ""})
+    this.setState({valorMax: ""})
+    this.setState({buscador: ""})
+  }
+
+  componentDidMount() {
+    const carrinhoString = localStorage.getItem("carrinho")
+    const carrinho = JSON.parse(carrinhoString)
+
+    this.setState({addCarrinho: carrinho})
+  }
+
+  componentDidUpdate() {
+    localStorage.setItem("carrinho", JSON.stringify(this.state.addCarrinho))
+  }
 
   render() {
 
     const produtosFiltradosOrdenados = this.filtrosProdutos()
 
     return (
-      <div className="App">
+      <div>
         <GlobalStyle/>
         <Header/>
         <OrdenacaoBlocos>
@@ -223,6 +254,7 @@ class App extends React.Component {
             valorMin={this.state.valorMin}
             valorMax={this.state.valorMax}
             buscador={this.state.buscador}
+            limpaFiltros = {this.limpaFiltros}
           />
           <MainContainer>
             <OrdenacaoTextos>
@@ -238,7 +270,6 @@ class App extends React.Component {
                 </select>
               </div>
             </OrdenacaoTextos>
-
             <ContainerAlinhamento>
               {produtosFiltradosOrdenados 
                 .map(produto => {
@@ -250,7 +281,6 @@ class App extends React.Component {
                       preco={produto.value}
                       adicionaCarrinho={() => {this.adicionaCarrinho(produto.name,produto.value, produto.id)}}
                     />
-
                   )
                 })}
             </ContainerAlinhamento>
