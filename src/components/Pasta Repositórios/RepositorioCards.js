@@ -11,9 +11,14 @@ const ContainerCard = styled.div`
     width: 25%;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;  
     background-color: white;  
+    font-weight:bold;
     @media screen and (min-device-width : 320px) and (max-device-width : 480px) {
         font-size: 10px;  
         width: 80%;
+    }
+    :hover {
+        transition-duration: 1s;
+        transform:scale(1.1 , 1.1);
     }
 `
 
@@ -24,6 +29,16 @@ const Imagens = styled.img`
         width: 60%;
     }
 `
+
+const Preco = styled.p `
+    color: #3936EB;
+    font-weight: bold;
+    font-size: 20px;
+    @media screen and (min-device-width : 320px) and (max-device-width : 480px) {
+        font-size: 12px;  
+    }
+`
+
 
 const Buttons = styled.button`
     background-color: #3936EB;
@@ -51,7 +66,7 @@ function RepositorioCards (props) {
         <ContainerCard>
             <Imagens src={props.imagem} alt="Imagem do Produto"/>
             <p>{props.produto}</p>
-            <p>R$ {props.preco},00</p>
+            <Preco>R$ {props.preco},00</Preco>
             <Buttons onClick={props.adicionaCarrinho}>Adicionar ao Carrinho</Buttons>
         </ContainerCard>
     )

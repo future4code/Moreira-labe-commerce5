@@ -5,7 +5,7 @@ import whatsapp from "../../imagens/whatsapp.png";
 import telegram from "../../imagens/telegram.png";
 
 const MainContainer = styled.div`
-    width: 100%;
+    width: 100%;;
     background-color: rgb(55, 26, 72);
     color: white;
     border: 1px white solid;

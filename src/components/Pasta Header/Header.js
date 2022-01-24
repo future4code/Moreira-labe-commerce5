@@ -9,7 +9,7 @@ const MainContainer = styled.div`
     justify-content: space-between;
     background-color: rgb(55, 26, 72);
     color: white;
-    width:100vw;
+    width:100%;
   `
 
 const Logostyle = styled.img`

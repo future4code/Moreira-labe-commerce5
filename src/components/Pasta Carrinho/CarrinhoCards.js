@@ -9,6 +9,8 @@ const EscolheProdutos = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 5px;
+  border-top: 1px dashed white;
+  border-bottom: 1px dashed white;
 
   p {
     font-size: 12px;

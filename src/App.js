@@ -27,7 +27,7 @@ const GlobalStyle = createGlobalStyle`
 
 const OrdenacaoBlocos = styled.div`
   display: flex;
-  width: 100vw;
+  width: 100%;
   
 `
 const MainContainer = styled.div`
