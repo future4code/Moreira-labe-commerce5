@@ -21,7 +21,7 @@ Este é um projeto de ecommerce em React js com styled-components.
 
 ### Publicação
 
-Projeto Astrobot T-Shirt Store publicado na plataform surge:
+Projeto Astrobot T-Shirt Store publicado na plataforma surge:
 
 #### - [Link do Surge](http://abandoned-cave.surge.sh/)
 <br/>
