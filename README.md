@@ -1,5 +1,28 @@
-## Sejam bem vindos ao Labe-commerce, esse repositório contém um esqueleto de app React e um .gitignore.
+<h1 align="center">
+    🛸 🛒 <a href="#" alt="site do projeto" target="_blank"> Labe-commerce </a> 🛒 🛸
+</h1>
+
+## 💻 Sobre o projeto
+
+    O site Labe-commerce é um dos projetos de frontend do curso de Web Full Stack da Labenu.
+    O projeto consiste em uma plataforma de Marketplace:
+
+A ideia do projeto consistiu em:
+
+Montar um e-commerce de itens espaciais e elaborar toda a construção da página, desde o Design, Arquitetura da Página e codificação final. Foram propostas diferentes linhas de produtos. As possíveis linhas de produto eram:
+- Satélites antigos;
+- Roupas espaciais;
+- Camisetas com estampas divertidas relacionadas ao espaço;
+- Viagens espaciais;
+- Meteoritos / aerolitos como pedras preciosas;
+- Brinquedos e produtos infantis temáticos;
+- Naves / Foguetes / Ônibus espaciais;
 <br/>
+
+As linha de produto escolhida para a confecção da página foi: 
+- Camisetas com estampas divertidas relacionadas ao espaço;
+<br/>
+
 Este é um projeto de ecommerce em React js com styled-components.
 <br/><br/>
 
@@ -19,7 +42,7 @@ Este é um projeto de ecommerce em React js com styled-components.
   - [Créditos](#créditos)
 <br/><br/>
 
-### Publicação
+### Publicação🎨
 
 Projeto Astrobot T-Shirt Store publicado na plataforma surge:
 
@@ -51,7 +74,7 @@ Projeto Astrobot T-Shirt Store publicado na plataforma surge:
 - Carrinho de compras 
 - Requisitos de filtro
 
-### Tecnologias
+### Tecnologias🛠
 
   - [React](https://pt-br.reactjs.org/)  - O react é uma biblioteca Java Scrip para desenvolovimento de interfaces web.
   - [Styled-components](https://styled-components.com/) - O styled components permite criar uma aplicação baseadas em pequenos componentes, possibilitando o reaproveitamento de código e padronização do layout.
@@ -76,7 +99,8 @@ Pós instalação das dependências, execute o comando necessário para rodar o 
 Por padrão a aplicação rodará localmente na porta 3000.
 <br/><br/>
 
-### Créditos
-
-* Guilherme Cruz - https://www.linkedin.com/in/guilherme-cruz-418596179/ 
+### Créditos💻
+ 👋🏽 [Entre em contato!]
+ <br/>
+* Guilherme Cruz - https://www.linkedin.com/in/guilherme-cruz-418596179/
 * Jaime Epifanio - https://www.linkedin.com/in/jaime-epifanio/
