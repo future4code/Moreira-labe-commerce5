@@ -100,7 +100,7 @@ Por padrão a aplicação rodará localmente na porta 3000.
 <br/><br/>
 
 ### Créditos💻
- 👋🏽 [Entre em contato!]
+ 👋🏽 Entre em contato!
  <br/>
 * Guilherme Cruz - https://www.linkedin.com/in/guilherme-cruz-418596179/
 * Jaime Epifanio - https://www.linkedin.com/in/jaime-epifanio/
