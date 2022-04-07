@@ -19,7 +19,7 @@ Montar um e-commerce de itens espaciais e elaborar toda a construção da págin
 - Naves / Foguetes / Ônibus espaciais;
 <br/>
 
-As linha de produto escolhida para a confecção da página foi: 
+A linha de produto escolhida para a confecção da página foi: 
 - Camisetas com estampas divertidas relacionadas ao espaço;
 <br/>
 
